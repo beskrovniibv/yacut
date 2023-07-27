@@ -4,6 +4,8 @@ import os
 MAX_URL_LENGTH = 2000
 SHORT_URL_LENGTH = 16
 
+ALLOWED_SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+
 
 class Config(object):
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI', 'sqlite:///db.sqlite3')
