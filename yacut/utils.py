@@ -1,8 +1,9 @@
 from random import choice
 
+from settings import ALLOWED_SYMBOLS
+
 from . import db
 from .models import URLMap
-from settings import ALLOWED_SYMBOLS
 
 
 def get_unique_short_id(url):
@@ -13,4 +14,4 @@ def get_unique_short_id(url):
             for _ in range(6):
                 short += choice(ALLOWED_SYMBOLS)
         return short, 201
-    return short, 200
+    return short.short, 200

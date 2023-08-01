@@ -15,8 +15,24 @@
           <div class="col-sm">
             <form method='POST' novalidate>
               {{ form.csrf_token }}
-              {{ form.original(class='form-control form-control-lg py-2 mb-3', placeholder=form.original.label.text )}}
+              {{ form.original_link(class='form-control form-control-lg py-2 mb-3', placeholder=form.original_link.label.text )}}
               <div>
+                {% if form.original_link.errors %}
+                  {% for error in form.original_link.errors %}
+                    <span style="color: red">{{ error }}</span>
+                  {% endfor %}
+                {% endif %}
+              </div>
+              {{ form.custom_id(class='form-control form-control-lg py-2 mb-3', placeholder=form.custom_id.label.text )}}
+              <div>
+                {% if form.custom_id.errors %}
+                  {% for error in form.custom_id.errors %}
+                    <span style="color: red">{{ error }}</span>
+                  {% endfor %}
+                {% endif %}
+              </div>
+              {{ form.submit(class='btn btn-primary') }}
+              <!-- <div>
                 <div>
                   <input type="text" class="form-control form-control-lg py-2 mb-3" id="form-title" name=""
                     placeholder="Длинная ссылка">
@@ -29,7 +45,7 @@
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="Создать">
-              </div>
+              </div> -->
             </form>
           </div>
           <div class="col-sm">
@@ -42,8 +58,23 @@
           <div class="col-sm">
           </div>
           <div class="col-sm">
-            <p class="text-center">
-            <h5 class="text-center">Пример информационного сообщения</h5>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <p class='text-center'>
+                    <h5 class='text-center'>{{ message }}</h5>
+                  </p>
+                {% endfor %}
+              {% endif %}
+              {% if short %}
+                  <p>
+                    <!-- <h5 class='text-center'>Ваша новая ссылка готова</h5> -->
+                    <h5 class='text-center'><a href='{{ short }}'>{{ short }}</a></h5>
+                  </p>
+              {% endif %}
+            {% endwith %}
+            <!-- <p class="text-center">
+            <h5 class="text-center">Пример информационного сообщения</h5> -->
             </p>
           </div>
           <div class="col-sm">
