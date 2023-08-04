@@ -31,7 +31,7 @@ def index_view():
             if URLMap.query.filter_by(original=url).first() is not None and custom:
                 flash(f'Для адреса {url} уже есть короткая ссылка')
                 return render_template('index.html', form=form, short=short, code=status.HTTP_400_BAD_REQUEST)
-            if code == status.HTTP_201_CREATED:
+            if code == status.HTTP_201_CREATED:  # noqa
                 urlmap = URLMap(
                     original=url,
                     short=short,
