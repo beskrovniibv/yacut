@@ -34,7 +34,6 @@ def create_short():
         not re.match(SHORT_URL_PATTERN, short)
     ):
         raise InvalidAPIUsage('Указано недопустимое имя для короткой ссылки')
-    # 
     if URLMap.query.filter_by(short=custom).first() is not None:
         raise InvalidAPIUsage(f'Имя "{custom}" уже занято.')
     if URLMap.query.filter_by(original=url).first() is not None and custom:

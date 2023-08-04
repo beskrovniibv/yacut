@@ -6,7 +6,6 @@ SHORT_URL_LENGTH = 16
 
 ALLOWED_SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 
-# SHORT_URL_PATTERN = r'%(symbols){{1, %(max_len)}}' % {'symbols': ALLOWED_SYMBOLS, 'max_len': SHORT_URL_LENGTH}
 SHORT_URL_PATTERN = re.compile(r'^[{allowed}]{{1,{max_len}}}$'.format(allowed=ALLOWED_SYMBOLS, max_len=SHORT_URL_LENGTH))
 
 
