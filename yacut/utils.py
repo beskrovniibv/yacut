@@ -2,7 +2,6 @@ from random import choice
 
 from settings import ALLOWED_SYMBOLS
 
-from . import db
 from .models import URLMap
 
 
