@@ -1,4 +1,4 @@
-from flask import flash, redirect, render_template
+from flask import flash, redirect, render_template, url_for
 from flask_api import status
 
 from . import app, db
@@ -25,7 +25,7 @@ def index_view():
                 db.session.add(urlmap)
                 db.session.commit()
                 flash('Ваша новая ссылка готова:')
-                return render_template('index.html', form=form, short=custom), status.HTTP_201_CREATED
+                return render_template('index.html', form=form, short=url_for('redirect_view', short=custom, _external=True)), status.HTTP_200_OK
         else:
             short, code = get_unique_short_id(url)
             if URLMap.query.filter_by(original=url).first() is not None and custom:
@@ -39,7 +39,7 @@ def index_view():
                 db.session.add(urlmap)
                 db.session.commit()
                 flash('Ваша новая ссылка готова:')
-                return render_template('index.html', form=form, short=short), code
+                return render_template('index.html', form=form, short=url_for('redirect_view', short=short, _external=True)), status.HTTP_200_OK
             elif code == status.HTTP_200_OK:
                 flash('Ваша ссылка:')
                 return render_template('index.html', form=form, short=short)
