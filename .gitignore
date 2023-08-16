@@ -2,6 +2,7 @@ flake8.txt
 requirements.new.txt
 tree.txt
 test.py
+html/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
