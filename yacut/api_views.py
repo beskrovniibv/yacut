@@ -4,7 +4,6 @@ from flask import jsonify, request, url_for
 from flask_api import status
 
 from settings import SHORT_URL_LENGTH, SHORT_URL_PATTERN
-
 from . import app, db
 from .error_handlers import InvalidAPIUsage
 from .models import URLMap
